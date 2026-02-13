@@ -2,7 +2,16 @@ import Tile from './Tile'
 
 export default function ExperienceCard({ onClick }) {
   return (
-    <Tile area="a" fill="dark" showChrome={true} label="Experience" labelAlign="center" onClick={onClick} borderRadius="50% 50% 16px 50%">
+    <Tile
+      area="a"
+      fill="dark"
+      showChrome={true}
+      label="Experience"
+      labelAlign="center"
+      labelRestPosition="bottom-right"
+      onClick={onClick}
+      borderRadius="50% 50% 16px 50%"
+    >
       <div className="h-full w-full" />
     </Tile>
   )

@@ -3,7 +3,16 @@ import Tile from './Tile'
 
 export default function SkillsCard({ onClick }) {
   return (
-    <Tile area="c" fill="light" showChrome={true} label="Skills" labelAlign="center" onClick={onClick} borderRadius="50% 50% 50% 16px">
+    <Tile
+      area="c"
+      fill="light"
+      showChrome={true}
+      label="Skills"
+      labelAlign="center"
+      labelRestPosition="bottom-left"
+      onClick={onClick}
+      borderRadius="50% 50% 50% 16px"
+    >
       <div className="h-full w-full" />
     </Tile>
   )

@@ -3,7 +3,16 @@ import Tile from './Tile'
 
 export default function AboutCard({ onClick }) {
   return (
-    <Tile area="b" fill="dark" showChrome={true} label="About Me" labelAlign="center" onClick={onClick} borderRadius="200px 200px 200px 16px">
+    <Tile
+      area="b"
+      fill="dark"
+      showChrome={true}
+      label="About Me"
+      labelAlign="center"
+      labelRestPosition="bottom-left"
+      onClick={onClick}
+      borderRadius="200px 200px 200px 16px"
+    >
       <div className="h-full w-full" />
     </Tile>
   )

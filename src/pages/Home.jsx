@@ -1,19 +1,27 @@
 import { useRef, useState } from 'react'
-import DrawerShell from '../components/DrawerShell'
-import ExperienceCard, { ExperienceModal } from '../components/ExperienceCard'
-import AboutCard, { AboutModal } from '../components/AboutCard'
-import SkillsCard, { SkillsModal } from '../components/SkillsCard'
-import PhotoCard from '../components/PhotoCard'
-import ProjectsCard, { ProjectsModal } from '../components/ProjectsCard'
-import ContactsCard, { ContactsModal } from '../components/ContactsCard'
-import GhostCursor from '../components/GhostCursor'
+import DrawerShell from '../components/layout/DrawerShell'
+import ExperienceCard, { ExperienceModal } from '../components/cards/ExperienceCard'
+import AboutCard, { AboutModal } from '../components/cards/AboutCard'
+import SkillsCard, { SkillsModal } from '../components/cards/SkillsCard'
+import PhotoCard from '../components/cards/PhotoCard'
+import ProjectsCard, { ProjectsModal } from '../components/cards/ProjectsCard'
+import ContactsCard, { ContactsModal } from '../components/cards/ContactsCard'
+import GhostCursor from '../components/effects/GhostCursor'
+
+const sections = {
+  exp: { title: 'Experience', origin: 'left', Modal: ExperienceModal },
+  about: { title: 'About Me', origin: 'top', Modal: AboutModal },
+  skills: { title: 'Skills', origin: 'right', Modal: SkillsModal },
+  projects: { title: 'Projects', origin: 'bottom', Modal: ProjectsModal },
+  contact: { title: 'Contacts', origin: 'right', Modal: ContactsModal },
+}
 
 export default function Home() {
   const [active, setActive] = useState(null)
   const lastTriggerRef = useRef(null)
   const lastOriginRef = useRef('right')
 
-  const order = ['exp', 'about', 'skills', 'projects', 'contact']
+  const order = Object.keys(sections)
   const activeIndex = active ? order.indexOf(active) : -1
   const canNavigate = activeIndex !== -1
   const onPrev = () => {
@@ -25,39 +33,16 @@ export default function Home() {
     setActive(order[(activeIndex + 1) % order.length])
   }
 
-  const originForSection = (section) => {
-    if (section === 'exp') return 'left'
-    if (section === 'projects') return 'bottom'
-    if (section === 'about') return 'top'
-    if (section === 'contact') return 'right'
-    return lastOriginRef.current ?? 'right'
+  const activeSection = active ? sections[active] : null
+  const activeTitle = activeSection?.title ?? ''
+  const ActiveModal = activeSection?.Modal
+  const activeBody = ActiveModal ? <ActiveModal /> : null
+
+  const openSection = (section, event) => {
+    lastTriggerRef.current = event?.currentTarget ?? null
+    lastOriginRef.current = sections[section]?.origin ?? 'right'
+    setActive(section)
   }
-
-  const activeTitle =
-    active === 'exp'
-      ? 'Experience'
-      : active === 'about'
-        ? 'About Me'
-        : active === 'skills'
-          ? 'Skills'
-          : active === 'projects'
-            ? 'Projects'
-            : active === 'contact'
-              ? 'Contacts'
-              : ''
-
-  const activeBody =
-    active === 'exp' ? (
-      <ExperienceModal />
-    ) : active === 'about' ? (
-      <AboutModal />
-    ) : active === 'skills' ? (
-      <SkillsModal />
-    ) : active === 'projects' ? (
-      <ProjectsModal />
-    ) : active === 'contact' ? (
-      <ContactsModal />
-    ) : null
 
   return (
     <section className="relative h-screen bg-black p-[50px] overflow-hidden">
@@ -68,40 +53,20 @@ export default function Home() {
           className="bento-grid w-full"
         >
           <ExperienceCard
-            onClick={(e) => {
-              lastTriggerRef.current = e?.currentTarget ?? null
-              lastOriginRef.current = 'left'
-              setActive('exp')
-            }}
+            onClick={(e) => openSection('exp', e)}
           />
           <AboutCard
-            onClick={(e) => {
-              lastTriggerRef.current = e?.currentTarget ?? null
-              lastOriginRef.current = 'top'
-              setActive('about')
-            }}
+            onClick={(e) => openSection('about', e)}
           />
           <SkillsCard
-            onClick={(e) => {
-              lastTriggerRef.current = e?.currentTarget ?? null
-              lastOriginRef.current = 'right'
-              setActive('skills')
-            }}
+            onClick={(e) => openSection('skills', e)}
           />
           <PhotoCard />
           <ProjectsCard
-            onClick={(e) => {
-              lastTriggerRef.current = e?.currentTarget ?? null
-              lastOriginRef.current = 'bottom'
-              setActive('projects')
-            }}
+            onClick={(e) => openSection('projects', e)}
           />
           <ContactsCard
-            onClick={(e) => {
-              lastTriggerRef.current = e?.currentTarget ?? null
-              lastOriginRef.current = 'right'
-              setActive('contact')
-            }}
+            onClick={(e) => openSection('contact', e)}
           />
         </div>
       </div>
@@ -109,7 +74,7 @@ export default function Home() {
       <DrawerShell
         open={Boolean(activeBody)}
         title={activeTitle}
-        origin={active ? originForSection(active) : 'right'}
+        origin={activeSection?.origin ?? lastOriginRef.current ?? 'right'}
         motionKey={active}
         index={canNavigate ? activeIndex + 1 : undefined}
         total={order.length}

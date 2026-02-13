@@ -3,7 +3,16 @@ import Tile from './Tile'
 
 export default function ContactsCard({ onClick }) {
   return (
-    <Tile area="f" fill="light" showChrome={true} label="Contacts" labelAlign="center" onClick={onClick} borderRadius="15px 50% 50% 50%">
+    <Tile
+      area="f"
+      fill="light"
+      showChrome={true}
+      label="Contacts"
+      labelAlign="center"
+      labelRestPosition="top-left"
+      onClick={onClick}
+      borderRadius="15px 50% 50% 50%"
+    >
       <div className="h-full w-full" />
     </Tile>
   )

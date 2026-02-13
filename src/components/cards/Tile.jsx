@@ -12,6 +12,7 @@ export default function Tile({
   showChrome = true,
   borderRadius = '36px',
   labelAlign = 'left',
+  labelRestPosition = 'center',
   children,
 }) {
   const fillClasses =
@@ -21,6 +22,17 @@ export default function Tile({
   const textClasses = fill === 'light' ? 'text-black/75' : 'text-white/75'
   const labelPosition = labelAlign === 'center' ? 'left-1/2 -translate-x-1/2' : 'left-6'
   const innerFrame = fill === 'light' ? 'border-black/15' : 'border-white/15'
+
+  const restPositionClass =
+    {
+      center: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+      'bottom-right': 'bottom-7 right-7',
+      'bottom-left': 'bottom-7 left-7',
+      'top-right': 'top-7 right-7',
+      'top-left': 'top-7 left-7',
+      'mid-left': 'top-1/2 left-7 -translate-y-1/2',
+      'mid-right': 'top-1/2 right-7 -translate-y-1/2',
+    }[labelRestPosition] ?? `top-1/2 ${labelPosition} -translate-y-1/2`
 
   const Comp = clickable ? motion.button : motion.div
   const compProps = clickable
@@ -56,7 +68,9 @@ export default function Tile({
 
       {showChrome && (
         <>
-          <div className={`absolute top-1/2 ${labelPosition} z-[2] -translate-y-1/2 transition-all duration-300 ease-out group-hover:text-white/95`}>
+          <div
+            className={`absolute z-[2] transition-all duration-300 ease-out group-hover:top-1/2 group-hover:left-1/2 group-hover:right-auto group-hover:bottom-auto group-hover:-translate-x-1/2 group-hover:-translate-y-1/2 group-hover:text-white/95 ${restPositionClass}`}
+          >
             <div className={`text-[1.75rem] font-black tracking-normal leading-none uppercase ${textClasses}`}>
               {label}
             </div>
