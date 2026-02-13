@@ -20,7 +20,7 @@ export default function DrawerShell({
     if (origin === 'left') {
       return {
         panelClass:
-          'fixed left-0 top-0 z-50 h-dvh w-full max-w-[720px] border-r-2 border-accent bg-black/75 backdrop-blur-xl outline-none',
+          'fixed left-0 top-0 z-50 h-dvh w-full max-w-[720px] border-r-2 border-[var(--drawer-border)] bg-[var(--drawer-bg)] backdrop-blur-xl outline-none',
         initial: { x: -40, opacity: 0 },
         animate: { x: 0, opacity: 1 },
         exit: { x: -40, opacity: 0 },
@@ -30,7 +30,7 @@ export default function DrawerShell({
     if (origin === 'top') {
       return {
         panelClass:
-          'fixed left-0 top-0 z-50 w-full max-h-[720px] h-[70dvh] border-b-2 border-accent bg-black/75 backdrop-blur-xl outline-none',
+          'fixed left-0 top-0 z-50 w-full max-h-[720px] h-[70dvh] border-b-2 border-[var(--drawer-border)] bg-[var(--drawer-bg)] backdrop-blur-xl outline-none',
         initial: { y: -40, opacity: 0 },
         animate: { y: 0, opacity: 1 },
         exit: { y: -40, opacity: 0 },
@@ -40,7 +40,7 @@ export default function DrawerShell({
     if (origin === 'bottom') {
       return {
         panelClass:
-          'fixed left-0 bottom-0 z-50 w-full max-h-[720px] h-[70dvh] border-t-2 border-accent bg-black/75 backdrop-blur-xl outline-none',
+          'fixed left-0 bottom-0 z-50 w-full max-h-[720px] h-[70dvh] border-t-2 border-[var(--drawer-border)] bg-[var(--drawer-bg)] backdrop-blur-xl outline-none',
         initial: { y: 40, opacity: 0 },
         animate: { y: 0, opacity: 1 },
         exit: { y: 40, opacity: 0 },
@@ -49,7 +49,7 @@ export default function DrawerShell({
 
     return {
       panelClass:
-        'fixed right-0 top-0 z-50 h-dvh w-full max-w-[720px] border-l-2 border-accent bg-black/75 backdrop-blur-xl outline-none',
+        'fixed right-0 top-0 z-50 h-dvh w-full max-w-[720px] border-l-2 border-[var(--drawer-border)] bg-[var(--drawer-bg)] backdrop-blur-xl outline-none',
       initial: { x: 40, opacity: 0 },
       animate: { x: 0, opacity: 1 },
       exit: { x: 40, opacity: 0 },

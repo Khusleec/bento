@@ -17,11 +17,14 @@ export default function Tile({
 }) {
   const fillClasses =
     fill === 'light'
-      ? 'bg-white/70 backdrop-blur-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]'
-      : 'bg-black/40 backdrop-blur-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]'
-  const textClasses = fill === 'light' ? 'text-black/75' : 'text-white/75'
+      ? 'bg-[var(--tile-light-bg)] backdrop-blur-xl shadow-[inset_0_1px_0_var(--tile-light-highlight)]'
+      : 'bg-[var(--tile-dark-bg)] backdrop-blur-xl shadow-[inset_0_1px_0_var(--tile-dark-highlight)]'
+  const textClasses = fill === 'light' ? 'text-[color:var(--tile-light-text)]' : 'text-[color:var(--tile-dark-text)]'
   const labelPosition = labelAlign === 'center' ? 'left-1/2 -translate-x-1/2' : 'left-6'
-  const innerFrame = fill === 'light' ? 'border-black/15' : 'border-white/15'
+  const innerFrame =
+    fill === 'light'
+      ? 'border-[color:var(--tile-light-highlight)]'
+      : 'border-[color:var(--tile-dark-highlight)]'
 
   const restPositionClass =
     {

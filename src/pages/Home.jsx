@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import DrawerShell from '../components/layout/DrawerShell'
 import ExperienceCard, { ExperienceModal } from '../components/cards/ExperienceCard'
 import AboutCard, { AboutModal } from '../components/cards/AboutCard'
@@ -18,8 +18,13 @@ const sections = {
 
 export default function Home() {
   const [active, setActive] = useState(null)
+  const [theme, setTheme] = useState('dark')
   const lastTriggerRef = useRef(null)
   const lastOriginRef = useRef('right')
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+  }, [theme])
 
   const order = Object.keys(sections)
   const activeIndex = active ? order.indexOf(active) : -1
@@ -45,8 +50,18 @@ export default function Home() {
   }
 
   return (
-    <section className="relative h-screen bg-black p-[50px] overflow-hidden">
+    <section className="relative h-screen p-[50px] overflow-hidden" style={{ backgroundColor: 'var(--bg-main)' }}>
       <GhostCursor />
+      <div className="pointer-events-none absolute left-6 top-6 z-20 text-xs tracking-[0.28em] uppercase text-white/60">
+        Khusleec's Portfolio
+      </div>
+      <button
+        type="button"
+        className="absolute right-6 top-6 z-30 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/80 shadow hover:border-white/40 hover:text-white transition"
+        onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
+      >
+        {theme === 'dark' ? 'Light' : 'Dark'} Mode
+      </button>
       <div className="background-stage topo-animate" />
       <div className="relative z-10 mx-auto h-full w-full">
         <div

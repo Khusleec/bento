@@ -3,12 +3,57 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bg-main: #020202;
+    --text-main: #ffffff;
+    --glow-1: rgba(0, 245, 208, 0.22);
+    --glow-2: rgba(0, 245, 208, 0.18);
+    --glow-3: rgba(0, 245, 208, 0.12);
+    --glow-4: rgba(0, 245, 208, 0.18);
+    --bg-stage-opacity: 0.4;
+
+    --tile-dark-bg: rgba(0, 0, 0, 0.4);
+    --tile-dark-highlight: rgba(255, 255, 255, 0.12);
+    --tile-dark-text: rgba(255, 255, 255, 0.75);
+
+    --tile-light-bg: rgba(255, 255, 255, 0.7);
+    --tile-light-highlight: rgba(255, 255, 255, 0.35);
+    --tile-light-text: rgba(0, 0, 0, 0.75);
+
+    --drawer-bg: rgba(0, 0, 0, 0.75);
+    --drawer-border: #00f5d0;
+  }
+
+  :root[data-theme='light'] {
+    --bg-main: #e5e7eb;
+    --text-main: #0b1224;
+    --glow-1: rgba(0, 100, 90, 0.14);
+    --glow-2: rgba(0, 100, 90, 0.1);
+    --glow-3: rgba(0, 100, 90, 0.08);
+    --glow-4: rgba(0, 100, 90, 0.12);
+    --bg-stage-opacity: 0.26;
+
+    /* swap tile styles: dark tiles become light, light tiles become dark */
+    --tile-dark-bg: rgba(255, 255, 255, 0.82);
+    --tile-dark-highlight: rgba(0, 0, 0, 0.08);
+    --tile-dark-text: rgba(0, 0, 0, 0.75);
+
+    --tile-light-bg: rgba(12, 16, 28, 0.82);
+    --tile-light-highlight: rgba(255, 255, 255, 0.12);
+    --tile-light-text: rgba(255, 255, 255, 0.88);
+
+    --drawer-bg: rgba(255, 255, 255, 0.85);
+    --drawer-border: #0b1224;
+  }
+
   html {
     scroll-behavior: smooth;
   }
   
   body {
     font-family: 'Jura', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
   }
 }
 
@@ -37,12 +82,12 @@
     position: fixed;
     inset: 0;
     z-index: 0;
-    opacity: 0.4;
+    opacity: var(--bg-stage-opacity, 0.4);
     background-image:
-      radial-gradient(circle at 0 0, rgba(0,245,208,0.22), transparent 55%),
-      radial-gradient(circle at 100% 100%, rgba(0,245,208,0.18), transparent 55%),
-      radial-gradient(circle at 0 100%, rgba(0,245,208,0.12), transparent 55%),
-      radial-gradient(circle at 100% 0, rgba(0,245,208,0.18), transparent 55%);
+      radial-gradient(circle at 0 0, var(--glow-1), transparent 55%),
+      radial-gradient(circle at 100% 100%, var(--glow-2), transparent 55%),
+      radial-gradient(circle at 0 100%, var(--glow-3), transparent 55%),
+      radial-gradient(circle at 100% 0, var(--glow-4), transparent 55%);
     background-size: 120% 120%;
     pointer-events: none;
   }
