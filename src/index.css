@@ -42,8 +42,8 @@
     --tile-light-highlight: rgba(255, 255, 255, 0.12);
     --tile-light-text: rgba(255, 255, 255, 0.88);
 
-    --drawer-bg: rgba(255, 255, 255, 0.85);
-    --drawer-border: #0b1224;
+    --drawer-bg: rgba(220, 224, 231, 0.78);
+    --drawer-border: rgba(12, 18, 36, 0.4);
   }
 
   html {
