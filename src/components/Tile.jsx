@@ -1,4 +1,4 @@
-import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const baseTile =
   'group relative h-full w-full overflow-hidden border-2 border-accent transition-all duration-300 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-black hover:-translate-y-1 hover:scale-[1.02] hover:border-white/60 hover:shadow-[0_8px_32px_-8px_rgba(0,245,208,0.2)]'

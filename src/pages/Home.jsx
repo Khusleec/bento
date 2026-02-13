@@ -6,7 +6,7 @@ import SkillsCard, { SkillsModal } from '../components/SkillsCard'
 import PhotoCard from '../components/PhotoCard'
 import ProjectsCard, { ProjectsModal } from '../components/ProjectsCard'
 import ContactsCard, { ContactsModal } from '../components/ContactsCard'
-import MonsterCursor from '../components/MonsterCursor'
+import GhostCursor from '../components/GhostCursor'
 
 export default function Home() {
   const [active, setActive] = useState(null)
@@ -61,7 +61,7 @@ export default function Home() {
 
   return (
     <section className="relative h-screen bg-black p-[50px] overflow-hidden">
-      <MonsterCursor />
+      <GhostCursor />
       <div className="background-stage topo-animate" />
       <div className="relative z-10 mx-auto h-full w-full">
         <div
