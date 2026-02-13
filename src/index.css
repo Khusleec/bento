@@ -22,28 +22,30 @@
 
     --drawer-bg: rgba(0, 0, 0, 0.75);
     --drawer-border: #00f5d0;
+    --drawer-text: #ffffff;
   }
 
   :root[data-theme='light'] {
-    --bg-main: #e5e7eb;
+    --bg-main: #d6d9df;
     --text-main: #0b1224;
-    --glow-1: rgba(0, 100, 90, 0.14);
-    --glow-2: rgba(0, 100, 90, 0.1);
-    --glow-3: rgba(0, 100, 90, 0.08);
-    --glow-4: rgba(0, 100, 90, 0.12);
-    --bg-stage-opacity: 0.26;
+    --glow-1: rgba(0, 100, 90, 0.08);
+    --glow-2: rgba(0, 100, 90, 0.06);
+    --glow-3: rgba(0, 100, 90, 0.05);
+    --glow-4: rgba(0, 100, 90, 0.07);
+    --bg-stage-opacity: 0.18;
 
     /* swap tile styles: dark tiles become light, light tiles become dark */
-    --tile-dark-bg: rgba(255, 255, 255, 0.82);
-    --tile-dark-highlight: rgba(0, 0, 0, 0.08);
-    --tile-dark-text: rgba(0, 0, 0, 0.75);
+    --tile-dark-bg: rgba(245, 247, 250, 0.82);
+    --tile-dark-highlight: rgba(0, 0, 0, 0.05);
+    --tile-dark-text: rgba(12, 18, 36, 0.78);
 
-    --tile-light-bg: rgba(12, 16, 28, 0.82);
-    --tile-light-highlight: rgba(255, 255, 255, 0.12);
+    --tile-light-bg: rgba(18, 24, 38, 0.78);
+    --tile-light-highlight: rgba(255, 255, 255, 0.1);
     --tile-light-text: rgba(255, 255, 255, 0.88);
 
-    --drawer-bg: rgba(220, 224, 231, 0.78);
-    --drawer-border: rgba(12, 18, 36, 0.4);
+    --drawer-bg: rgba(210, 214, 220, 0.74);
+    --drawer-border: rgba(12, 18, 36, 0.35);
+    --drawer-text: #0b1224;
   }
 
   html {
@@ -90,6 +92,32 @@
       radial-gradient(circle at 100% 0, var(--glow-4), transparent 55%);
     background-size: 120% 120%;
     pointer-events: none;
+  }
+
+  :root[data-theme='light'] .drawer-panel {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  :root[data-theme='light'] .drawer-panel [class*='backdrop-blur'] {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  :root[data-theme='light'] .drawer-panel [class*='text-white'] {
+    color: #0b1224 !important;
+  }
+
+  :root[data-theme='light'] .drawer-panel [class*='border-white'] {
+    border-color: rgba(11, 18, 36, 0.18) !important;
+  }
+
+  :root[data-theme='light'] .drawer-panel [class*='bg-white/5'] {
+    background-color: rgba(255, 255, 255, 0.75) !important;
+  }
+
+  :root[data-theme='light'] .drawer-panel [class*='bg-black/20'] {
+    background-color: rgba(198, 204, 214, 0.9) !important;
   }
 
   .bento-grid {

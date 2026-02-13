@@ -57,7 +57,10 @@ export default function Home() {
       </div>
       <button
         type="button"
-        className="absolute right-6 top-6 z-30 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/80 shadow hover:border-white/40 hover:text-white transition"
+        className={`absolute right-6 top-6 z-30 rounded-full px-3 py-1 text-xs uppercase tracking-[0.2em] shadow transition
+          ${theme === 'dark'
+            ? 'border border-white/15 bg-white/10 text-white/80 hover:border-white/40 hover:text-white'
+            : 'border border-[#0b1224] bg-white/80 text-[#0b1224] hover:border-[#0b1224] hover:bg-white hover:text-black shadow-lg'}`}
         onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
       >
         {theme === 'dark' ? 'Light' : 'Dark'} Mode

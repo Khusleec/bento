@@ -1,4 +1,4 @@
-import { User, Mail, Phone } from 'lucide-react'
+import { User } from 'lucide-react'
 import Tile from './Tile'
 
 export default function AboutCard({ onClick }) {
@@ -57,33 +57,6 @@ export function AboutModal() {
         </div>
       </div>
 
-      <div className="rounded-2xl border border-white/15 bg-white/5 p-5">
-        <div className="text-base font-bold tracking-normal text-white">Contact</div>
-        <div className="mt-3 grid gap-3 sm:grid-cols-2">
-          <div className="rounded-2xl border border-white/15 bg-black/20 p-4">
-            <div className="flex items-center gap-2 text-xs text-white/60">
-              <Mail size={12} /> Email
-            </div>
-            <a
-              className="mt-1 block text-sm text-white/90 underline decoration-white/20 underline-offset-4 transition hover:text-white hover:decoration-white/50"
-              href="mailto:khuselsuren@gmail.com"
-            >
-              khuselsuren@gmail.com
-            </a>
-          </div>
-          <div className="rounded-2xl border border-white/15 bg-black/20 p-4">
-            <div className="flex items-center gap-2 text-xs text-white/60">
-              <Phone size={12} /> Phone
-            </div>
-            <a
-              className="mt-1 block text-sm text-white/90 underline decoration-white/20 underline-offset-4 transition hover:text-white hover:decoration-white/50"
-              href="tel:86566676"
-            >
-              86566676
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
   )
 }
